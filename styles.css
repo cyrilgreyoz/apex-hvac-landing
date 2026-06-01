@@ -1422,6 +1422,183 @@ select.luxury-input option {
 }
 
 /* -------------------------------------------------------------
+ * SYSTEM STATUS TERMINAL CONSOLE GRAPHIC
+ * ------------------------------------------------------------- */
+.terminal-frame {
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem !important;
+  background: linear-gradient(135deg, rgba(12, 12, 14, 0.85) 0%, rgba(6, 6, 8, 0.95) 100%) !important;
+  user-select: none;
+  pointer-events: none;
+}
+
+.terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-medium);
+  padding-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.terminal-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.control-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.control-dot.close { background-color: #EF4444; }
+.control-dot.minimize { background-color: #F59E0B; }
+.control-dot.expand { background-color: #10B981; }
+
+.terminal-title {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.terminal-status-glow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.status-pulse-green {
+  width: 5px;
+  height: 5px;
+  background-color: var(--accent-green);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--accent-green);
+  animation: pulseGreen 1.8s infinite;
+}
+
+.status-lbl {
+  font-size: 0.55rem;
+  color: var(--accent-green);
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.terminal-body {
+  flex-grow: 1;
+  overflow-y: hidden;
+  font-size: 0.72rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: left;
+}
+
+.terminal-line {
+  font-family: var(--font-mono);
+  margin-bottom: 0.35rem;
+  opacity: 0;
+  transform: translateY(4px);
+  animation: lineFadeIn 0.3s ease-out forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.terminal-line.accent {
+  color: var(--accent-amber);
+}
+
+.terminal-line.success {
+  color: var(--accent-green);
+}
+
+@keyframes lineFadeIn {
+  to {
+    opacity: 0.85;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------------------------------------------------
+ * CORE ARCHITECTURAL FOCUSES SECTION
+ * ------------------------------------------------------------- */
+.focuses-section {
+  padding: 12rem 0;
+  border-top: 1px solid var(--border-light);
+  background-color: var(--bg-main);
+  position: relative;
+}
+
+.focuses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3.5rem;
+}
+
+.focus-card {
+  padding: 3.5rem;
+  background-color: rgba(18, 18, 20, 0.35);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-smooth);
+}
+
+.focus-card:hover {
+  border-color: var(--border-strong);
+  background-color: rgba(18, 18, 20, 0.6);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.focus-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.focus-num {
+  font-size: 1rem;
+  color: var(--accent-amber);
+  opacity: 0.8;
+  letter-spacing: 0.05em;
+}
+
+.focus-title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.focus-sub {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.focus-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* -------------------------------------------------------------
  * RESPONSIVENESS & CONSOLIDATED FLUID MEDIA QUERIES (MOBILE/TABLET)
  * ------------------------------------------------------------- */
 
@@ -1447,7 +1624,8 @@ select.luxury-input option {
     margin: 0 auto;
   }
   
-  .stats-grid {
+  .stats-grid,
+  .focuses-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
@@ -1506,6 +1684,7 @@ select.luxury-input option {
   
   .problem-section,
   .solution-section,
+  .focuses-section,
   .calculator-section,
   .contact-section {
     padding: 6rem 0;
@@ -1552,9 +1731,13 @@ select.luxury-input option {
     margin-top: 3.5rem;
   }
   
-  /* Tighter stats card padding */
+  /* Tighter focuses and stats card padding */
+  .focus-card,
   .stat-card {
     padding: 2.2rem 1.5rem;
+  }
+  
+  .stat-card {
     min-height: 220px;
   }
   
