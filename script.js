@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initRoiCalculator();
   initSmoothScrolling();
   initAuditFormSubmit();
+  initHeroTerminal();
 });
 
 /* -------------------------------------------------------------
@@ -395,3 +396,92 @@ function initAuditFormSubmit() {
     }
   });
 }
+
+/* -------------------------------------------------------------
+ * 9. SYSTEM STATUS TERMINAL SIMULATOR
+ * ------------------------------------------------------------- */
+function initHeroTerminal() {
+  const terminal = document.getElementById('terminalBody');
+  if (!terminal) return;
+
+  const logs = [
+    "[AERO.AI // CORE ENGINE INITIALIZED]",
+    "[SYSTEMS // CRM INTEGRATION ACTIVE]",
+    "[VOICE INTELLIGENCE // DEPLOYED]",
+    "[REVENUE RECOVERY LOGS // SCANNING]",
+    "[NODE: ARCH-ALPHA // SYNC COMPLETED]",
+    "[API: SERVICETITAN // PIPELINE STABLE]",
+    "[API: JOBBER // HANDSHAKE SUCCESSFUL]",
+    "[DATABASE // REACTIVATION RATIO: 94.2%]",
+    "[VOICE CORE // INTERCEPTING OVERFLOW INBOUNDS]",
+    "[VOICE CORE // TEXT-BACK SEQUENCING RUNNING]",
+    "[CO-PILOT // RETRIEVING DIAGNOSTIC SCHEMA... DONE]",
+    "[TELEMETRY // SECURE TUNNEL NOMINAL]",
+    "[AI PIPELINE // RECOVERING LEAKED MARGINS...]",
+    "[METRICS // LATENCY: 42ms // LOAD: 3.8%]",
+    "[SYSTEMS // ENCRYPTION HANDSHAKE NOMINAL]",
+    "[VOICE CORE // DYNAMIC TRIAGE LOAD NOMINAL]",
+    "[RECOVERY CORE // PIPELINE INGESTION RUNNING]"
+  ];
+
+  // Instantly populate first 4 logs
+  const initialLogs = [
+    logs[0],
+    logs[1],
+    logs[2],
+    logs[3]
+  ];
+
+  initialLogs.forEach((log, index) => {
+    setTimeout(() => {
+      appendLogLine(log);
+    }, index * 250);
+  });
+
+  // Start continuous simulation streaming
+  let logPointer = 4;
+  
+  function streamNextLog() {
+    // Choose random delay for organic feel
+    const randomDelay = Math.random() * 1500 + 1000; // 1s to 2.5s
+    
+    setTimeout(() => {
+      const logText = logs[logPointer];
+      appendLogLine(logText);
+      
+      // Advance and loop pointer
+      logPointer = (logPointer + 1) % logs.length;
+      
+      streamNextLog();
+    }, randomDelay);
+  }
+
+  // Delay the continuous stream slightly until initial boot logs settle
+  setTimeout(streamNextLog, 1500);
+
+  function appendLogLine(text) {
+    const line = document.createElement('div');
+    line.className = 'terminal-line';
+    
+    // Add visual highlights based on content
+    if (text.includes('INITIALIZED') || text.includes('SUCCESSFUL') || text.includes('STABLE') || text.includes('NOMINAL')) {
+      line.classList.add('success');
+    } else if (text.includes('SCANNING') || text.includes('RECOVERING') || text.includes('RETRIEVING')) {
+      line.classList.add('accent');
+    }
+    
+    line.textContent = text;
+    terminal.appendChild(line);
+    
+    // Automatic scroll optimization
+    terminal.scrollTop = terminal.scrollHeight;
+    
+    // Performance optimization: prevent DOM accumulation bloat
+    const maxLines = 11; // Matches frame dimensions cleanly
+    const activeLines = terminal.querySelectorAll('.terminal-line');
+    if (activeLines.length > maxLines) {
+      activeLines[0].remove();
+    }
+  }
+}
+
