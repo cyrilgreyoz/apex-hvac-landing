@@ -1552,3 +1552,38 @@ select.luxury-input option {
   line-height: 1.6;
   max-width: 420px;
 }
+/* --- SILENT LUXURY MOBILE OPTIMIZATION --- */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .blueprint-grid, .main-content {
+    width: 100% !important;
+    padding: 20px !important;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: 2.2rem !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px !important;
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  #vapi-tooltip {
+    bottom: 80px !important;
+    right: 20px !important;
+    transform: scale(0.9);
+  }
+}
