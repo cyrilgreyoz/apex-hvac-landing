@@ -452,20 +452,20 @@
     };
 
     (function (d, t) {
-      var g = d.createElement(t),
-        s = d.getElementsByTagName(t)[0];
-      g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
-      g.defer = true;
-      g.async = true;
-      s.parentNode.insertBefore(g, s);
-      g.onload = function () {
-      vapiInstance = window.vapiSDK.run({
+  var g = d.createElement(t);
+  g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+  g.defer = true;
+  g.async = true;
+  d.getElementsByTagName(t)[0].parentNode.appendChild(g);
+  
+  g.onload = function () {
+    window.vapiSDK.run({
       apiKey: "778c3186-27d2-48cf-8b9a-d772638f2480",
       assistant: "9ca4c617-001f-4c0c-abb1-e18abdb3d0f9",
       config: buttonConfig
     });
-      };
-    })(document, "script");
+  };
+})(document, "script");
   </script>
 </body>
 </html>
