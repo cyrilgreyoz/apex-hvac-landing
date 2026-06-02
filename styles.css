@@ -1299,7 +1299,9 @@ select.luxury-input option {
   background: linear-gradient(135deg, #ECC8C5 0%, #B76E79 50%, #E8B9A7 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   box-shadow: 0 10px 30px rgba(183, 110, 121, 0.35) !important;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s ease, 
+              background 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
   z-index: 9999 !important;
   width: 56px !important;
   height: 56px !important;
@@ -1310,11 +1312,38 @@ select.luxury-input option {
   align-items: center !important;
   justify-content: center !important;
   border-radius: 50% !important;
+  cursor: pointer !important;
+  outline: none !important;
 }
 
 .vapi-btn:hover {
   transform: scale(1.08) !important;
   box-shadow: 0 15px 35px rgba(183, 110, 121, 0.55) !important;
+}
+
+/* Custom SDK Call Button States */
+.vapi-btn svg {
+  color: var(--bg-deep) !important;
+  fill: none;
+  display: block;
+}
+
+.vapi-btn.active {
+  background: #EF4444 !important;
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.45) !important;
+}
+
+.vapi-btn.active svg {
+  color: var(--text-primary) !important;
+}
+
+.vapi-btn .animate-spin {
+  animation: vapiSpin 1.2s linear infinite;
+}
+
+@keyframes vapiSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Voice Tooltip next to Vapi button */
