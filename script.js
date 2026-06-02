@@ -498,7 +498,7 @@ function initVapiCall() {
 
   let vapi = null;
   try {
-    vapi = new Vapi(apiKey);
+    vapi = new window.Vapi(apiKey);
   } catch (e) {
     console.error("Vapi Web SDK initialization failed:", e);
     return;
