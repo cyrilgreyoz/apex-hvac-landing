@@ -496,13 +496,7 @@ function initVapiCall() {
   const apiKey = "778c3186-27d2-48cf-8b9a-d772638f2480";
   const assistantId = "9ca4c617-001f-4c0c-abb1-e18abdb3d0f9";
 
-  let vapi = null;
-  try {
-    vapi = new window.Vapi(apiKey);
-  } catch (e) {
-    console.error("Vapi Web SDK initialization failed:", e);
-    return;
-  }
+  const vapi = new window.Vapi(apiKey);
 
   let isCalling = false;
   let isLoading = false;
