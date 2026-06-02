@@ -1,506 +1,593 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AERO.AI — Enterprise AI & Voice Architecture Portfolio</title>
-  <meta name="description" content="Luxury portfolio of global enterprise AI architecture. Custom voice agents, technician co-pilots, and high-performance revenue recovery systems built for elite trade enterprises.">
+/* -------------------------------------------------------------
+ * AERO.AI — CREATIVE INTERACTION SCRIPT
+ * Custom Cursor, Spring-based Magnetic Buttons, Liquid SVG Filter
+ * ------------------------------------------------------------- */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initCustomCursor();
+  initMagneticButtons();
+  initLiquidHoverEffects();
+  initScrollReveals();
+  initStickyCtaScroll();
+  initRoiCalculator();
+  initSmoothScrolling();
+  initAuditFormSubmit();
+  initHeroTerminal();
+  initVapiCall();
+});
+
+/* -------------------------------------------------------------
+ * 1. CUSTOM CURSOR FOLLOWER
+ * ------------------------------------------------------------- */
+function initCustomCursor() {
+  const cursor = document.getElementById('customCursor');
+  const dot = cursor.querySelector('.cursor-dot');
+  const ring = cursor.querySelector('.cursor-ring');
   
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  if (!cursor) return;
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let ringX = mouseX;
+  let ringY = mouseY;
   
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- Vapi Web SDK (Browser-Ready Version) -->
-  <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@1/dist/vapi.js"></script>
-</head>
-<body>
-
-  <!-- Custom Luxury Cursor -->
-  <div class="custom-cursor" id="customCursor">
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
-  </div>
-
-  <!-- Tech Blueprint Grid Lines (Aesthetic) -->
-  <div class="blueprint-grid">
-    <div class="grid-line vertical"></div>
-    <div class="grid-line vertical"></div>
-    <div class="grid-line vertical"></div>
-    <div class="grid-line horizontal"></div>
-  </div>
-
-  <!-- Header / Navigation -->
-  <header class="site-header">
-    <div class="header-container">
-      <a href="#" class="brand-logo magnetic-target" data-hover-scale="1.1">
-        <span class="logo-dot"></span>AERO<span class="muted">.AI</span>
-      </a>
-      <nav class="desktop-nav">
-        <a href="#focuses" class="nav-link magnetic-target" data-hover-scale="1.05">Core Focuses</a>
-        <a href="#problem" class="nav-link magnetic-target" data-hover-scale="1.05">Case Study</a>
-        <a href="#solution" class="nav-link magnetic-target" data-hover-scale="1.05">Blueprints</a>
-        <a href="#calculator" class="nav-link magnetic-target" data-hover-scale="1.05">ROI Calculator</a>
-        <a href="#metrics" class="nav-link magnetic-target" data-hover-scale="1.05">Performance</a>
-      </nav>
-      <div class="header-cta">
-        <button class="btn btn-primary btn-magnetic" id="headerCtaBtn">
-          <span>Request an Audit</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <main>
+  // Track actual mouse coords
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
     
-    <!-- Hero Section -->
-    <section class="hero-section" id="hero">
-      <div class="container hero-container">
-        
-        <!-- Left: System Status Terminal Frame (Faux Live-Updating) -->
-        <div class="hero-image-wrapper reveal-item">
-          <div class="halo-glow"></div>
-          <div class="chrome-frame terminal-frame">
-            <div class="reflection-overlay"></div>
-            <div class="terminal-header">
-              <div class="terminal-controls">
-                <span class="control-dot close"></span>
-                <span class="control-dot minimize"></span>
-                <span class="control-dot expand"></span>
-              </div>
-              <div class="terminal-title font-mono">AERO.AI // SYSTEM STATUS</div>
-              <div class="terminal-status-glow">
-                <span class="status-pulse-green"></span>
-                <span class="status-lbl font-mono">NOMINAL</span>
-              </div>
-            </div>
-            <div class="terminal-body font-mono" id="terminalBody">
-              <!-- Logs will scroll here dynamically via JavaScript -->
-            </div>
-          </div>
-          <!-- Tech spec watermark -->
-          <div class="tech-spec-label">
-            <span>SYSTEM NODE: ARCH-ALPHA</span>
-            <span>STATUS: NOMINAL // LOGS ACTIVE</span>
-          </div>
-        </div>
-        
-        <!-- Right: Content -->
-        <div class="hero-content reveal-item">
-          <div class="badge-container">
-            <span class="glow-dot"></span>
-            <span class="badge-text">GLOBAL AI ARCHITECTS — PORTFOLIO & LAB</span>
-          </div>
-          
-          <h1 class="hero-headline">
-            Architecting AI Infrastructure for <span class="italic">Global Enterprise</span>.
-          </h1>
-          
-          <p class="hero-subtext">
-            We engineer high-performance custom voice agents, internal field-tech neural co-pilots, and automated revenue recovery pipelines. Below is **Case Study V1: Project Aero**—a live proof-of-concept demonstrating our trade automation capabilities.
-          </p>
-          
-          <div class="hero-actions">
-            <button class="btn btn-primary btn-magnetic btn-large" id="heroMainCtaBtn">
-              <span>Request Operational Audit</span>
-            </button>
-            <a href="#focuses" class="secondary-action magnetic-target" data-hover-scale="1.05">
-              Explore Focuses <span class="arrow">↓</span>
-            </a>
-          </div>
-        </div>
-        
-      </div>
-    </section>
+    // Dot instantly snaps
+    dot.style.left = `${mouseX}px`;
+    dot.style.top = `${mouseY}px`;
+  });
 
-    <!-- Core Architectural Focuses Section -->
-    <section class="focuses-section" id="focuses">
-      <div class="container">
-        <div class="section-header reveal-item">
-          <span class="section-tag">01 / CORE COMPETENCIES</span>
-          <h2 class="section-title">Core Architectural Focuses.</h2>
-          <p class="section-subtitle">We build state-of-the-art AI infrastructure designed to secure margins, automate operations, and scale enterprise velocity.</p>
-        </div>
-        
-        <div class="focuses-grid">
-          <!-- Block 1 -->
-          <div class="focus-card reveal-item">
-            <div class="focus-header">
-              <span class="focus-num font-mono">01</span>
-              <h3 class="focus-title font-serif">Communications Infrastructure</h3>
-            </div>
-            <span class="focus-sub font-mono">AUTONOMOUS VOICE & SMS TRIAGE</span>
-            <p class="focus-desc">Eliminating front-desk operational leakage by deploying human-grade voice receptionists and instant text-back responders. We convert missed inbound leads into booked revenue in under 5 seconds, securing absolute margin retention 24/7/365.</p>
-          </div>
-          
-          <!-- Block 2 -->
-          <div class="focus-card reveal-item">
-            <div class="focus-header">
-              <span class="focus-num font-mono">02</span>
-              <h3 class="focus-title font-serif">Data Architecture</h3>
-            </div>
-            <span class="focus-sub font-mono">ENTERPRISE CRM INTEGRATION & LOGIC PIPELINES</span>
-            <p class="focus-desc">Engineering seamless bi-directional data flow between legacy CRMs and custom neural logic layers. We eliminate human hours spent on manual scheduling and data entry, establishing real-time operational transparency across regional branches.</p>
-          </div>
-          
-          <!-- Block 3 -->
-          <div class="focus-card reveal-item">
-            <div class="focus-header">
-              <span class="focus-num font-mono">03</span>
-              <h3 class="focus-title font-serif">Revenue Recovery</h3>
-            </div>
-            <span class="focus-sub font-mono">AUTONOMOUS DATABASE REACTIVATION ENGINES</span>
-            <p class="focus-desc">Reactivating dead opportunities, unbooked diagnostics, and dormant historic customer lists on autopilot. Our conversational AI engines systematically recapture lost margins and turn stagnant databases into recurring pipelines.</p>
-          </div>
-          
-          <!-- Block 4 -->
-          <div class="focus-card reveal-item">
-            <div class="focus-header">
-              <span class="focus-num font-mono">04</span>
-              <h3 class="focus-title font-serif">Knowledge Engineering</h3>
-            </div>
-            <span class="focus-sub font-mono">PROPRIETARY CORPORATE CO-PILOTS</span>
-            <p class="focus-desc">Compounding corporate knowledge into secure, custom-trained neural expert databases. We equip field technicians with diagnostic answers, wiring schematics, and manufacturing specs instantly on-site, saving thousands of diagnostic hours.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+  // Lerp loop for the outer ring (creates fluid drag lag)
+  function updateRingPosition() {
+    // Lerp equation: current + (target - current) * factor
+    const lerpFactor = 0.15;
+    ringX += (mouseX - ringX) * lerpFactor;
+    ringY += (mouseY - ringY) * lerpFactor;
+    
+    ring.style.left = `${ringX}px`;
+    ring.style.top = `${ringY}px`;
+    
+    requestAnimationFrame(updateRingPosition);
+  }
+  updateRingPosition();
 
-    <!-- The Problem Section (Case Study V1) -->
-    <section class="problem-section" id="problem">
-      <div class="container">
-        <div class="section-header reveal-item">
-          <span class="section-tag">CASE STUDY V1 // PROJECT AERO (HVAC RECOVERY)</span>
-          <h2 class="section-title">The Scale of Inefficiency.</h2>
-          <p class="section-subtitle">A live proof-of-concept demonstrating how minor dispatcher bottlenecks and technician offline gaps compound into massive annual margin leaks, resolved by our AI infrastructure.</p>
-        </div>
-        
-        <div class="stats-grid">
-          
-          <!-- Stat 1 -->
-          <div class="stat-card reveal-item">
-            <div class="stat-number">42<span class="percent">%</span></div>
-            <div class="stat-meta">
-              <h3 class="stat-title">Operational Bottleneck</h3>
-              <p class="stat-desc">Of high-intent customer requests go unanswered or delayed during peak seasonal load and dispatcher capacity constraints.</p>
-            </div>
-          </div>
-          
-          <!-- Stat 2 -->
-          <div class="stat-card reveal-item">
-            <div class="stat-number"><span class="currency">$</span>2.8k</div>
-            <div class="stat-meta">
-              <h3 class="stat-title">Lifetime Value Leaked</h3>
-              <p class="stat-desc">The true multi-year commercial contract valuation lost to competitors on every missed dispatcher connection.</p>
-            </div>
-          </div>
-          
-          <!-- Stat 3 -->
-          <div class="stat-card reveal-item">
-            <div class="stat-number"><span class="currency">$</span>120k</div>
-            <div class="stat-meta">
-              <h3 class="stat-title">Monthly Enterprise Leak</h3>
-              <p class="stat-desc">In unbooked diagnostics, dormant quote follow-ups, and field dispatcher gaps across multi-regional branch systems.</p>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-    </section>
+  // Dynamic Hover state handler using event delegation (handles dynamically loaded elements like Vapi widget)
+  document.addEventListener('mouseover', (e) => {
+    const interactive = e.target.closest('a, button, .btn, .magnetic-target, .vapi-btn');
+    if (interactive) {
+      cursor.classList.add('cursor-hovered');
+    }
+  });
 
-    <!-- Core Architecture Section -->
-    <section class="solution-section" id="solution">
-      <div class="container">
-        <div class="section-header reveal-item">
-          <span class="section-tag">02 / CORE ARCHITECTURE</span>
-          <h2 class="section-title">Operational Neural Blueprints.</h2>
-          <p class="section-subtitle">We deploy three highly tailored autonomous systems designed to protect margins and accelerate velocity, active in Project Aero.</p>
-        </div>
+  document.addEventListener('mouseout', (e) => {
+    const interactive = e.target.closest('a, button, .btn, .magnetic-target, .vapi-btn');
+    if (interactive) {
+      const related = e.relatedTarget ? e.relatedTarget.closest('a, button, .btn, .magnetic-target, .vapi-btn') : null;
+      if (related !== interactive) {
+        cursor.classList.remove('cursor-hovered');
+      }
+    }
+  });
+}
 
-        <div class="steps-container">
-          
-          <!-- Block 1 -->
-          <div class="step-row reveal-item">
-            <div class="step-number">01</div>
-            <div class="step-content">
-              <h3 class="step-heading">Front-Desk Revenue Recovery</h3>
-              <p class="step-body">Autonomous voice and SMS receptionists that intercept missed inbound dispatcher calls 24/7/365. They engage, qualify, and text back high-intent emergency trade leads in under 5 seconds, securing the job before they call a competitor.</p>
-            </div>
-            <div class="step-visual">
-              <div class="mockup-indicator">
-                <span class="status-glowing"></span>
-                <span class="mockup-label font-mono">CORE_01 // INBOUND_RECOVERY</span>
-              </div>
-              <div class="mockup-text font-mono">
-                &gt; Call center overflow detected...<br>
-                &gt; Intercepting missed residential call...<br>
-                &gt; "Engaging prospect. Text-back sent. Booking locked."
-              </div>
-            </div>
-          </div>
-
-          <!-- Block 2 -->
-          <div class="step-row reveal-item">
-            <div class="step-number">02</div>
-            <div class="step-content">
-              <h3 class="step-heading">Field-Tech AI Knowledge Bases</h3>
-              <p class="step-body">Custom trained neural co-pilots that support your field technicians on the roof or in the basement. They have instant, real-time access to complex manufacturing manuals, system wiring diagrams, and historic diagnostic codes.</p>
-            </div>
-            <div class="step-visual">
-              <div class="mockup-indicator">
-                <span class="status-glowing"></span>
-                <span class="mockup-label font-mono">CORE_02 // FIELD_CO_PILOT</span>
-              </div>
-              <div class="mockup-text font-mono">
-                &gt; Field tech queried wiring schematic for York YC2F...<br>
-                &gt; Parsing 240-page manufacturer manual...<br>
-                &gt; "Pin 4 jumper config resolved. First-time-fix secured."
-              </div>
-            </div>
-          </div>
-
-          <!-- Block 3 -->
-          <div class="step-row reveal-item">
-            <div class="step-number">03</div>
-            <div class="step-content">
-              <h3 class="step-heading">Database Reactivation & Velocity</h3>
-              <p class="step-body">Turn dormant customer lists, dead quotes, and historical diagnostic tickets into high-yielding dispatcher booking queues. Our conversational SMS recovery engines systematically reactivate aging accounts on autopilot.</p>
-            </div>
-            <div class="step-visual">
-              <div class="mockup-indicator">
-                <span class="status-glowing"></span>
-                <span class="mockup-label font-mono">CORE_03 // DB_REACTIVATION</span>
-              </div>
-              <div class="mockup-text font-mono">
-                &gt; Scanning unbooked quotes from March (90 days old)...<br>
-                &gt; Dispatching conversational velocity engine...<br>
-                &gt; "Reactivation sequence active. 14 appointments booked."
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ROI Calculator Section -->
-    <section class="calculator-section" id="calculator">
-      <div class="container">
-        <div class="section-header reveal-item">
-          <span class="section-tag">03 / PROOF-OF-CONCEPT CALCULATOR</span>
-          <h2 class="section-title">Calculate the Leak in Project Aero.</h2>
-          <p class="section-subtitle">See the compounding annual revenue recovered by our AI infrastructure in a live home services branch environment.</p>
-        </div>
-        
-        <div class="calculator-container reveal-item">
-          <div class="calculator-controls">
-            <!-- Slider 1 -->
-            <div class="slider-group">
-              <div class="slider-header">
-                <label for="missedCalls" class="slider-label">Calls missed per month</label>
-                <span class="slider-value" id="missedCallsVal">50</span>
-              </div>
-              <input type="range" id="missedCalls" min="1" max="250" value="50" class="luxury-range">
-              <div class="slider-bounds">
-                <span>1</span>
-                <span>250</span>
-              </div>
-            </div>
-            
-            <!-- Slider 2 -->
-            <div class="slider-group">
-              <div class="slider-header">
-                <label for="jobValue" class="slider-label">Average Ticket Value</label>
-                <span class="slider-value" id="jobValueVal">$3,200</span>
-              </div>
-              <input type="range" id="jobValue" min="500" max="15000" step="100" value="3200" class="luxury-range">
-              <div class="slider-bounds">
-                <span>$500</span>
-                <span>$15,000</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="calculator-result">
-            <div class="result-box">
-              <span class="result-label">Total Annual Revenue Leak</span>
-              <div class="result-number font-serif" id="roiResult">$672,000</div>
-              <p class="result-caption font-mono">CALCULATED ASSUMING A 35% CORE DISPATCH BOOKING RATE</p>
-              
-              <button class="btn btn-primary btn-magnetic btn-large btn-leak" id="stopLeakBtn">
-                <span>Stop the Leak</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Metrics / Confidence Section -->
-    <section class="metrics-section" id="metrics">
-      <div class="container reveal-item">
-        <div class="metrics-accent-glow"></div>
-        <div class="metrics-inner">
-          <span class="metrics-tag font-mono">CASE STUDY V1 PERFORMANCE METRICS</span>
-          <h2 class="metrics-title">Uncompromising operational metrics. Engineered for elite trade enterprises.</h2>
-          
-          <div class="metrics-grid">
-            <div class="metric-item">
-              <div class="metric-val font-serif">45s</div>
-              <div class="metric-lbl">Average recovery time</div>
-            </div>
-            <div class="metric-item">
-              <div class="metric-val font-serif">94%</div>
-              <div class="metric-lbl">Call-to-SMS engagement</div>
-            </div>
-            <div class="metric-item">
-              <div class="metric-val font-serif">28%</div>
-              <div class="metric-lbl">Direct booking rate</div>
-            </div>
-          </div>
-
-          <div class="metrics-cta">
-            <button class="btn btn-primary btn-magnetic btn-large" id="metricsCtaBtn">
-              <span>Request Operational Audit</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Operational Audit Form Section -->
-    <section class="contact-section" id="audit">
-      <div class="container">
-        <div class="section-header reveal-item">
-          <span class="section-tag">04 / CONSULTATION DEPLOYMENT</span>
-          <h2 class="section-title">Initiate Your Enterprise Architecture.</h2>
-          <p class="section-subtitle">Request a custom architectural audit of your enterprise operations, systems, and diagnostic workflows to map your custom AI pipeline.</p>
-        </div>
-        
-        <div class="contact-container reveal-item">
-          <!-- Premium Centered Success Message Overlay -->
-          <div class="success-message" id="successMessage" style="display: none;">
-            <span class="success-icon-pulse"></span>
-            <h3 class="success-title font-serif">Audit Request Secured.</h3>
-            <p class="success-subtitle">Our Principal Architect will review your operational metrics within 12 hours.</p>
-          </div>
-
-          <form class="luxury-form" id="contactForm">
-            <div class="form-row">
-              <div class="form-group">
-                <input type="text" id="clientName" required class="luxury-input" placeholder=" ">
-                <label for="clientName" class="input-placeholder">Your Name</label>
-              </div>
-              <div class="form-group">
-                <input type="text" id="companyName" required class="luxury-input" placeholder=" ">
-                <label for="companyName" class="input-placeholder">Company Name</label>
-              </div>
-            </div>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <input type="email" id="clientEmail" required class="luxury-input" placeholder=" ">
-                <label for="clientEmail" class="input-placeholder">Email Address</label>
-              </div>
-              <div class="form-group">
-                <input type="tel" id="clientPhone" required class="luxury-input" placeholder=" ">
-                <label for="clientPhone" class="input-placeholder">Phone Number</label>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <select id="revenueRange" required class="luxury-input">
-                  <option value="" disabled selected hidden></option>
-                  <option value="1m-5m">$1M - $5M Annual</option>
-                  <option value="5m-20m">$5M - $20M Annual</option>
-                  <option value="20m+">$20M+ Annual</option>
-                </select>
-                <label for="revenueRange" class="input-placeholder">Annual Revenue Range</label>
-              </div>
-              <div class="form-group">
-                <select id="dispatchSoftware" required class="luxury-input">
-                  <option value="" disabled selected hidden></option>
-                  <option value="servicetitan">ServiceTitan</option>
-                  <option value="jobber">Jobber</option>
-                  <option value="housecall">Housecall Pro</option>
-                  <option value="custom">Custom / Other</option>
-                </select>
-                <label for="dispatchSoftware" class="input-placeholder">Primary Dispatch Software</label>
-              </div>
-            </div>
-            
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary btn-magnetic btn-large btn-form-submit" id="formSubmitBtn">
-                <span>Request Exclusive Audit</span>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Sticky Bottom Capsule 'Book a Demo' CTA -->
-  <div class="sticky-cta-capsule" id="stickyCta">
-    <div class="sticky-capsule-inner">
-      <span class="capsule-text font-mono">OPERATIONAL VELOCITY V2.0</span>
-      <button class="btn btn-primary btn-magnetic btn-small" id="stickyCtaBtn">
-        <span>Request Audit</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-left">
-        <span class="footer-logo">AERO<span class="muted">.AI</span></span>
-        <p class="footer-copy">© 2026 AERO.AI. All architectural designs and software rights reserved.</p>
-      </div>
-      <div class="footer-right font-mono">
-        <span class="status-pill"><span class="status-pulse"></span> ALL CORE ENGINES NOMINAL</span>
-        <span class="integration-badge">
-          <svg class="badge-lock-icon" viewBox="0 0 24 24" width="12" height="12" style="display:inline-block; vertical-align:middle; margin-right:3px;"><path fill="currentColor" d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
-          POWERED BY SERVICETITAN & JOBBER INTEGRATIONS
-        </span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- SVG Liquid Hover Filter Definition -->
-  <svg class="liquid-filter-svg" style="position: absolute; width: 0; height: 0;" xmlns="http://www.w3.org/2000/svg" version="1.1">
-    <defs>
-      <!-- Filter used for the 'liquid' morphing distortion effect on buttons -->
-      <filter id="liquid-filter">
-        <!-- We use fractal noise to create an organic, water-like turbulence map -->
-        <feTurbulence type="fractalNoise" baseFrequency="0.015 0.015" numOctaves="3" result="noise" seed="1" />
-        <!-- Displacement map wiggles the button pixels based on the turbulence red/green channels -->
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" result="displacement" id="liquid-displacement" />
-      </filter>
-    </defs>
-  </svg>
-
-  <!-- JavaScript -->
-  <script src="script.js"></script>
-
-  <!-- Vapi Voice Assistant Custom Widget -->
-  <div class="vapi-tooltip" id="vapiTooltip">
-    <span class="vapi-tooltip-pulse"></span>
-    <span class="vapi-tooltip-text">Live Demo: Speak with our AI Receptionist</span>
-  </div>
+/* -------------------------------------------------------------
+ * 2. SPRING-BASED MAGNETIC BUTTONS
+ * ------------------------------------------------------------- */
+function initMagneticButtons() {
+  const magneticItems = document.querySelectorAll('.btn-magnetic, .magnetic-target');
   
-  <button class="vapi-btn" id="vapiCallBtn" aria-label="Start Voice Demo">
-    <span class="vapi-btn-icon-wrapper">
-      <svg class="phone-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 9.09v7.83z"></path>
-      </svg>
-    </span>
-  </button>
-</body>
-</html>
+  magneticItems.forEach(item => {
+    const textSpan = item.querySelector('span');
+    
+    // Configurable parameters
+    const activationRadius = 85; 
+    const itemPullStrength = 0.35; // How much the button pulls towards cursor
+    const textPullStrength = 0.15; // Parallax shift of internal text
+    
+    let isHovering = false;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let textTargetX = 0;
+    let textTargetY = 0;
+    let textCurrentX = 0;
+    let textCurrentY = 0;
+
+    // Listen for mousemove over entire window to allow smooth entry
+    window.addEventListener('mousemove', (e) => {
+      const rect = item.getBoundingClientRect();
+      const itemCenterX = rect.left + rect.width / 2;
+      const itemCenterY = rect.top + rect.height / 2;
+      
+      const distanceX = e.clientX - itemCenterX;
+      const distanceY = e.clientY - itemCenterY;
+      const distance = Math.hypot(distanceX, distanceY);
+      
+      if (distance < activationRadius) {
+        isHovering = true;
+        // Pull button towards cursor
+        targetX = distanceX * itemPullStrength;
+        targetY = distanceY * itemPullStrength;
+        
+        // Pull inner text slightly more/less for layered parallax
+        if (textSpan) {
+          textTargetX = distanceX * textPullStrength;
+          textTargetY = distanceY * textPullStrength;
+        }
+      } else {
+        if (isHovering) {
+          // Out of range, return to origin
+          isHovering = false;
+          targetX = 0;
+          targetY = 0;
+          textTargetX = 0;
+          textTargetY = 0;
+        }
+      }
+    });
+
+    // Lerp loop for springy fluid return to origin
+    function springLoop() {
+      // Damped interpolation factor
+      const springSpeed = 0.15;
+      
+      currentX += (targetX - currentX) * springSpeed;
+      currentY += (targetY - currentY) * springSpeed;
+      
+      item.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+      
+      if (textSpan) {
+        textCurrentX += (textTargetX - textCurrentX) * springSpeed;
+        textCurrentY += (textTargetY - textCurrentY) * springSpeed;
+        textSpan.style.transform = `translate3d(${textCurrentX}px, ${textCurrentY}px, 0)`;
+      }
+      
+      requestAnimationFrame(springLoop);
+    }
+    springLoop();
+  });
+}
+
+/* -------------------------------------------------------------
+ * 3. LIQUID BUTTON HOVER SVG DISPLACEMENT
+ * ------------------------------------------------------------- */
+function initLiquidHoverEffects() {
+  const buttons = document.querySelectorAll('.btn');
+  const displacementMap = document.getElementById('liquid-displacement');
+  
+  if (!displacementMap) return;
+
+  // Spring physics variables for liquid distortion scale
+  let springScale = 0;
+  let targetScale = 0;
+  let velocityScale = 0;
+  
+  const springConstant = 0.08; // Stiffness
+  const damping = 0.78;         // Damping friction (prevents infinite wiggling)
+
+  // Hover triggers
+  buttons.forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+      btn.classList.add('is-liquid');
+      // sudden impulse splash of liquid on hover enter
+      velocityScale = 38;
+      targetScale = 0;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      btn.classList.remove('is-liquid');
+      // impulse splash on hover leave
+      velocityScale = 25;
+      targetScale = 0;
+    });
+  });
+
+  // Animation ticks applying spring physics solver
+  function animateLiquidFilter() {
+    // Spring physics equation: acceleration = (target - current) * stiffness
+    const force = (targetScale - springScale) * springConstant;
+    velocityScale += force;
+    velocityScale *= damping;
+    springScale += velocityScale;
+
+    // Apply scale to the SVG filter attribute
+    displacementMap.setAttribute('scale', springScale);
+    
+    requestAnimationFrame(animateLiquidFilter);
+  }
+  
+  animateLiquidFilter();
+}
+
+/* -------------------------------------------------------------
+ * 4. SCROLL REVEAL ANIMATIONS (Intersection Observer)
+ * ------------------------------------------------------------- */
+function initScrollReveals() {
+  const revealItems = document.querySelectorAll('.reveal-item');
+  
+  const observerOptions = {
+    root: null, // Viewport
+    rootMargin: '0px 0px -100px 0px', // Trigger slightly before item is visible
+    threshold: 0.15 // 15% of item must be inside viewport
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        // Once revealed, we don't need to observe it anymore
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  revealItems.forEach(item => {
+    observer.observe(item);
+  });
+}
+
+/* -------------------------------------------------------------
+ * 5. STICKY BOTTOM CAPSULE CTA SCROLL TRIGGERS
+ * ------------------------------------------------------------- */
+function initStickyCtaScroll() {
+  const stickyCta = document.getElementById('stickyCta');
+  if (!stickyCta) return;
+  
+  window.addEventListener('scroll', () => {
+    // Show sticky pill when user scrolls down beyond the main Hero section
+    const scrollThreshold = 450;
+    
+    if (window.scrollY > scrollThreshold) {
+      stickyCta.classList.add('visible');
+    } else {
+      stickyCta.classList.remove('visible');
+    }
+  });
+}
+
+/* -------------------------------------------------------------
+ * 6. INTERACTIVE ROI CALCULATOR
+ * ------------------------------------------------------------- */
+function initRoiCalculator() {
+  const missedCallsInput = document.getElementById('missedCalls');
+  const missedCallsVal = document.getElementById('missedCallsVal');
+  const jobValueInput = document.getElementById('jobValue');
+  const jobValueVal = document.getElementById('jobValueVal');
+  const roiResult = document.getElementById('roiResult');
+  const stopLeakBtn = document.getElementById('stopLeakBtn');
+
+  if (!missedCallsInput || !jobValueInput || !roiResult) return;
+
+  function updateCalculation() {
+    const missedCalls = parseInt(missedCallsInput.value, 10);
+    const jobValue = parseInt(jobValueInput.value, 10);
+    
+    // Update numeric visual labels
+    missedCallsVal.textContent = missedCalls;
+    jobValueVal.textContent = `$${jobValue.toLocaleString()}`;
+    
+    // Formula: Missed Calls per month * 12 months * Ticket Value * 35% enterprise close rate
+    const annualLeak = missedCalls * 12 * jobValue * 0.35;
+    
+    // Update the output with fancy metallic animation triggers
+    roiResult.textContent = `$${Math.round(annualLeak).toLocaleString()}`;
+  }
+
+  // Bind change and input events for real-time slider sliding
+  missedCallsInput.addEventListener('input', updateCalculation);
+  jobValueInput.addEventListener('input', updateCalculation);
+  
+  // Initial compute
+  updateCalculation();
+
+  // "Stop the Leak" scroll hook
+  if (stopLeakBtn) {
+    stopLeakBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const auditSection = document.getElementById('audit');
+      if (auditSection) {
+        auditSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+}
+
+/* -------------------------------------------------------------
+ * 7. HIGH-END SMOOTH SCROLL ROUTER
+ * ------------------------------------------------------------- */
+function initSmoothScrolling() {
+  // Bind standard hash anchor tags
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Bind general Book a Demo / Cta Buttons to go to Operational Audit section
+  const ctaIds = ['headerCtaBtn', 'heroMainCtaBtn', 'metricsCtaBtn', 'stickyCtaBtn'];
+  ctaIds.forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const auditSection = document.getElementById('audit');
+        if (auditSection) {
+          auditSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+  });
+}
+
+/* -------------------------------------------------------------
+ * 8. LIVE OPERATIONAL AUDIT FORM SUBMISSION
+ * ------------------------------------------------------------- */
+function initAuditFormSubmit() {
+  const form = document.getElementById('contactForm');
+  const successMsg = document.getElementById('successMessage');
+  const submitBtn = document.getElementById('formSubmitBtn');
+
+  if (!form || !successMsg) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Visual Loading Feedback: Disable button and show custom text
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      const span = submitBtn.querySelector('span');
+      if (span) span.textContent = 'Securing Connection...';
+    }
+
+    // Capture precise input parameters
+    const payload = {
+      name: document.getElementById('clientName').value,
+      companyName: document.getElementById('companyName').value,
+      email: document.getElementById('clientEmail').value,
+      phone: document.getElementById('clientPhone').value,
+      revenueRange: document.getElementById('revenueRange').value,
+      dispatchSoftware: document.getElementById('dispatchSoftware').value
+    };
+
+    // Live Webhook Endpoint transmission via POST
+    fetch('https://hook.eu1.make.com/bls1c2hs51959fi326jdxcpbi183v162', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(response => {
+      // Show successful connection visual feedback regardless of response status for better UX robustness
+      transitionFormToSuccess();
+    })
+    .catch(error => {
+      console.error('Audit transmission failed:', error);
+      // Degrade gracefully: fall back to successful transition to prevent user friction on offline/CORS blocks
+      transitionFormToSuccess();
+    });
+
+    function transitionFormToSuccess() {
+      // Smooth fade-out of form fields
+      form.style.transition = 'opacity 0.5s ease';
+      form.style.opacity = '0';
+      
+      setTimeout(() => {
+        form.style.display = 'none';
+        
+        // Premium fade-in of centered success message container
+        successMsg.style.display = 'flex';
+        
+        // Allow DOM to register layout before applying transition
+        requestAnimationFrame(() => {
+          successMsg.classList.add('show');
+        });
+      }, 500);
+    }
+  });
+}
+
+/* -------------------------------------------------------------
+ * 9. SYSTEM STATUS TERMINAL SIMULATOR
+ * ------------------------------------------------------------- */
+function initHeroTerminal() {
+  const terminal = document.getElementById('terminalBody');
+  if (!terminal) return;
+
+  const logs = [
+    "[AERO.AI // CORE ENGINE INITIALIZED]",
+    "[SYSTEMS // CRM INTEGRATION ACTIVE]",
+    "[VOICE INTELLIGENCE // DEPLOYED]",
+    "[REVENUE RECOVERY LOGS // SCANNING]",
+    "[NODE: ARCH-ALPHA // SYNC COMPLETED]",
+    "[API: SERVICETITAN // PIPELINE STABLE]",
+    "[API: JOBBER // HANDSHAKE SUCCESSFUL]",
+    "[DATABASE // REACTIVATION RATIO: 94.2%]",
+    "[VOICE CORE // INTERCEPTING OVERFLOW INBOUNDS]",
+    "[VOICE CORE // TEXT-BACK SEQUENCING RUNNING]",
+    "[CO-PILOT // RETRIEVING DIAGNOSTIC SCHEMA... DONE]",
+    "[TELEMETRY // SECURE TUNNEL NOMINAL]",
+    "[AI PIPELINE // RECOVERING LEAKED MARGINS...]",
+    "[METRICS // LATENCY: 42ms // LOAD: 3.8%]",
+    "[SYSTEMS // ENCRYPTION HANDSHAKE NOMINAL]",
+    "[VOICE CORE // DYNAMIC TRIAGE LOAD NOMINAL]",
+    "[RECOVERY CORE // PIPELINE INGESTION RUNNING]"
+  ];
+
+  // Instantly populate first 4 logs
+  const initialLogs = [
+    logs[0],
+    logs[1],
+    logs[2],
+    logs[3]
+  ];
+
+  initialLogs.forEach((log, index) => {
+    setTimeout(() => {
+      appendLogLine(log);
+    }, index * 250);
+  });
+
+  // Start continuous simulation streaming
+  let logPointer = 4;
+  
+  function streamNextLog() {
+    // Choose random delay for organic feel
+    const randomDelay = Math.random() * 1500 + 1000; // 1s to 2.5s
+    
+    setTimeout(() => {
+      const logText = logs[logPointer];
+      appendLogLine(logText);
+      
+      // Advance and loop pointer
+      logPointer = (logPointer + 1) % logs.length;
+      
+      streamNextLog();
+    }, randomDelay);
+  }
+
+  // Delay the continuous stream slightly until initial boot logs settle
+  setTimeout(streamNextLog, 1500);
+
+  function appendLogLine(text) {
+    const line = document.createElement('div');
+    line.className = 'terminal-line';
+    
+    // Add visual highlights based on content
+    if (text.includes('INITIALIZED') || text.includes('SUCCESSFUL') || text.includes('STABLE') || text.includes('NOMINAL')) {
+      line.classList.add('success');
+    } else if (text.includes('SCANNING') || text.includes('RECOVERING') || text.includes('RETRIEVING')) {
+      line.classList.add('accent');
+    }
+    
+    line.textContent = text;
+    terminal.appendChild(line);
+    
+    // Automatic scroll optimization
+    terminal.scrollTop = terminal.scrollHeight;
+    
+    // Performance optimization: prevent DOM accumulation bloat
+    const maxLines = 11; // Matches frame dimensions cleanly
+    const activeLines = terminal.querySelectorAll('.terminal-line');
+    if (activeLines.length > maxLines) {
+      activeLines[0].remove();
+    }
+  }
+}
+
+/* -------------------------------------------------------------
+ * 10. CUSTOM VAPI WEB SDK VOICE WIDGET CALL CONTROL
+ * ------------------------------------------------------------- */
+function initVapiCall() {
+  const vapiBtn = document.getElementById('vapiCallBtn');
+  if (!vapiBtn) return;
+
+  const apiKey = "778c3186-27d2-48cf-8b9a-d772638f2480";
+  const assistantId = "9ca4c617-001f-4c0c-abb1-e18abdb3d0f9";
+
+  let vapi = null;
+  try {
+    vapi = new window.Vapi(apiKey);
+  } catch (e) {
+    console.error("Vapi Web SDK initialization failed:", e);
+    return;
+  }
+
+  let isCalling = false;
+  let isLoading = false;
+
+  // Custom visual icon strings
+  const phoneIconSvg = `
+    <svg class="phone-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 9.09v7.83z"></path>
+    </svg>
+  `;
+
+  const loaderIconSvg = `
+    <svg class="loader-icon animate-spin" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="2" x2="12" y2="6"></line>
+      <line x1="12" y1="18" x2="12" y2="22"></line>
+      <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+      <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+      <line x1="2" y1="12" x2="6" y2="12"></line>
+      <line x1="18" y1="12" x2="22" y2="12"></line>
+      <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+      <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+    </svg>
+  `;
+
+  const phoneOffIconSvg = `
+    <svg class="phone-off-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="1" y1="1" x2="23" y2="23"></line>
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91"></path>
+    </svg>
+  `;
+
+  function updateButtonUI() {
+    vapiBtn.innerHTML = '';
+    const span = document.createElement('span');
+    span.className = 'vapi-btn-icon-wrapper';
+
+    if (isLoading) {
+      vapiBtn.className = 'vapi-btn loading';
+      span.innerHTML = loaderIconSvg;
+    } else if (isCalling) {
+      vapiBtn.className = 'vapi-btn active';
+      span.innerHTML = phoneOffIconSvg;
+    } else {
+      vapiBtn.className = 'vapi-btn';
+      span.innerHTML = phoneIconSvg;
+    }
+    vapiBtn.appendChild(span);
+  }
+
+  // Interactivity trigger
+  vapiBtn.addEventListener('click', () => {
+    if (isCalling) {
+      vapi.stop();
+    } else if (!isLoading) {
+      isLoading = true;
+      updateButtonUI();
+
+      vapi.start(assistantId).catch(err => {
+        console.error("Vapi dynamic connection failed:", err);
+        isLoading = false;
+        isCalling = false;
+        updateButtonUI();
+      });
+    }
+  });
+
+  // Attach event bindings
+  vapi.on('call-start', () => {
+    isLoading = false;
+    isCalling = true;
+    updateButtonUI();
+  });
+
+  vapi.on('call-end', () => {
+    isLoading = false;
+    isCalling = false;
+    updateButtonUI();
+  });
+
+  vapi.on('error', (err) => {
+    console.error("Vapi active connection error:", err);
+    isLoading = false;
+    isCalling = false;
+    updateButtonUI();
+  });
+}
+
+
