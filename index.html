@@ -483,57 +483,24 @@
     </defs>
   </svg>
 
+  <!-- Vapi Voice Assistant Web SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@2.5.2/dist/vapi.min.js"></script>
+
   <!-- JavaScript -->
   <script src="script.js"></script>
 
-  <!-- Vapi Voice Assistant Web Widget -->
+  <!-- Vapi Voice Assistant Custom Widget -->
   <div class="vapi-tooltip" id="vapiTooltip">
     <span class="vapi-tooltip-pulse"></span>
     <span class="vapi-tooltip-text">Live Demo: Speak with our AI Receptionist</span>
   </div>
-  <script>
-    var vapiInstance = null;
-    const assistant = "9ca4c617-001f-4c0c-abb1-e18abdb3d0f9";
-    const apiKey = "778c3186-27d2-48cf-8b9a-d772638f2480";
-    
-    // Custom button configuration for a luxury, minimalist rose-gold floating button
-    const buttonConfig = {
-      position: "bottom-right",
-      offset: "2rem",
-      width: "56px",
-      height: "56px",
-      idle: {
-        color: "rgb(183, 110, 121)", // Rose Gold
-        type: "round",
-        icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone.svg"
-      },
-      loading: {
-        color: "rgb(199, 126, 137)",
-        type: "round",
-        icon: "https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg"
-      },
-      active: {
-        color: "rgb(232, 185, 167)",
-        type: "round",
-        icon: "https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg"
-      }
-    };
-
-    (function (d, t) {
-      var g = d.createElement(t),
-        s = d.getElementsByTagName(t)[0];
-      g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
-      g.defer = true;
-      g.async = true;
-      s.parentNode.insertBefore(g, s);
-      g.onload = function () {
-        vapiInstance = window.vapiSDK.run({
-          apiKey: apiKey,
-          assistant: assistant,
-          config: buttonConfig
-        });
-      };
-    })(document, "script");
-  </script>
+  
+  <button class="vapi-btn" id="vapiCallBtn" aria-label="Start Voice Demo">
+    <span class="vapi-btn-icon-wrapper">
+      <svg class="phone-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 9.09v7.83z"></path>
+      </svg>
+    </span>
+  </button>
 </body>
 </html>
